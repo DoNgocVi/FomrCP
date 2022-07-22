@@ -66,8 +66,7 @@
         class="form_input"
         type="text"
         placeholder="入力してください"
-        name="fistName"
-        v-model="fistName"
+        name="noName"
       />
     </div>
     <div>
@@ -86,7 +85,7 @@
     <div>
       <div class="text_require">
         <p class="require">必須</p>
-        <p class="help-text">セイ</p>
+        <p class="help-text">メイ</p>
       </div>
       <input
         class="form_input"
@@ -95,6 +94,49 @@
         name="lastName"
         v-model="lastName"
       />
+    </div>
+    <div>
+      <div class="text_require">
+        <p class="require">必須</p>
+        <p class="help-text">姓（ローマ字）</p>
+      </div>
+      <input
+        class="form_input"
+        type="text"
+        placeholder="入力してください"
+        name="lastName"
+        v-model="lastName"
+      />
+    </div>
+    <div>
+      <div class="text_require">
+        <p class="require">必須</p>
+        <p class="help-text">名（ローマ字）</p>
+      </div>
+      <input
+        class="form_input"
+        type="text"
+        placeholder="入力してください"
+        name="fistNameRo"
+        v-model="fistNameRo"
+      />
+    </div>
+    <div>
+      <div class="text_require">
+        <p class="require">必須</p>
+        <p class="help-text">性別</p>
+      </div>
+
+      <div class="radio_button">
+        <div class="radio_button-male">
+          <input type="radio" id="male" value="Male" v-model="picked" />
+          <label for="male">男性</label>
+        </div>
+        <div class="radio_button-female">
+          <input type="radio" id="female" value="Female" v-model="picked" />
+          <label for="female">女性</label>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -157,6 +199,32 @@ export default {
     p {
       color: #333333;
       font-weight: 700;
+    }
+  }
+  .radio_button {
+    margin-top: 6px;
+    display: flex;
+    border-radius: 4px;
+     border: 1px solid #dcdcdc;
+     overflow: hidden;
+    .radio_button-male {
+      display: flex;
+      gap: 4px;
+      justify-content: center;
+      align-items: center;
+      padding: 12px;
+      width: 50%;
+      background-color: #ffffff;
+      border-right: 1px solid #dcdcdc;
+    }
+    .radio_button-female {
+      display: flex;
+      gap: 4px;
+      justify-content: center;
+      align-items: center;
+      padding: 12px;
+      width: 50%;
+      background-color: #ffffff;
     }
   }
   p {
