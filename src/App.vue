@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="containers">
     <router-view />
   </div>
 </template>
@@ -9,17 +9,17 @@ export default {
 };
 </script>
 
-<style>
+<style scope lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap");
 * {
-  box-sizing: border-box;
+  box-sizing: border-box ;
   margin: 0;
   padding: 0;
 }
 html {
   font-size: 62.5%;
 }
-.container {
+.containers {
   font-family: "Noto Sans JP", sans-serif;
   font-size: 1.6rem;
   display: flex;

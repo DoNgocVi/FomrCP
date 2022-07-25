@@ -8,11 +8,14 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.5",
     "@vuelidate/core": "^2.0.0-alpha.42",
     "@vuelidate/validators": "^2.0.0-alpha.30",
+    "bootstrap": "^5.2.0",
+    "bootstrap-vue": "^2.22.0",
     "core-js": "^3.8.3",
     "vee-validate": "^4.6.2",
-    "vue": "^3.2.13",
+    "vue": "^3.2.37",
     "vue-router": "^4.1.2",
     "vuex": "^4.0.2",
     "yup": "^0.32.11"
