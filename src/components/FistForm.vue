@@ -160,14 +160,15 @@
     </div>
     <p class="require">必須</p>
     <div class="white_content">
-      <label class="form-control">
+      <label class="checkAgree">
         <input
           type="checkbox"
           id="hasAgreeToTerms"
           name="hasAgreeToTerms"
-          v-model="isCheck"
+          v-model="isCheckAgree"
         />
-        <p>同意する場合はチェックをしてください</p>
+
+        <p class="mb-0">同意する場合はチェックをしてください</p>
       </label>
     </div>
   </div>
@@ -184,25 +185,33 @@
   </div>
   <button
     class="button-agrre"
-    :class="!isCheck ? 'button-agrre-disable' : '' "
+    :class="!isCheckAgree ? 'button-agrre-disable' : ''"
     @click.prevent="nextForm"
-    :disabled="!isCheck"
+    :disabled="!isCheckAgree"
     type="button"
   >
     入社手続きの入力に進む
   </button>
 </template>
 <script>
+// import { mapActions } from 'vuex';
 export default {
+  components: {
+  },
   data() {
     return {
-      isCheck: false,
+      isCheckAgree: false,
     };
   },
   computed: {},
   methods: {
+    // ...mapActions([['setCheckAgree']]),
     nextForm() {
-      this.$router.push("/form2");
+      if (this.isCheckAgree) {
+        // setCheckAgree(this.isCheckAgree)
+        this.$store.dispatch("setCheckAgree", this.isCheckAgree);
+        this.$router.push("/form2");
+      }
     },
   },
 };
@@ -257,6 +266,11 @@ export default {
       grid-template-columns: 1em auto;
       gap: 0.5em;
     }
+    .checkAgree {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
     .white_content-line {
       display: flex;
       align-items: center;
@@ -305,7 +319,7 @@ export default {
   background: #b2b1ff;
   cursor: pointer;
 }
-.button-agrre-disable{
-  cursor: not-allowed
+.button-agrre-disable {
+  cursor: not-allowed;
 }
 </style>

@@ -1,3 +1,6 @@
+
+      // <form-error :errors="v$.form.mobilePhoneNumberRela.$errors" />
+
 <template>
   <div class="form_group">
     <div class="warning">
@@ -27,6 +30,7 @@
         id="formFileSm"
         type="file"
       />
+     
       <img src="../assets/images/upload.png" alt="" />
       <div class="mb-3"></div>
       <p>
@@ -35,6 +39,7 @@
         ファイルを参照する
       </p>
     </div>
+     <form-error :errors="v$.form.previewImage.facePhoto.$errors" />
   </div>
 
   <div class="form_group">
@@ -68,13 +73,13 @@
       </p>
     </div>
   </div>
+
   <div class="form_group">
     <div class="form_title">基本情報登録</div>
-
     <p class="help-text">
       外国式氏名が戸籍に記載されている場合、国際結婚により戸籍上の姓が外国式の姓となっている、もしくは重国籍で戸籍上の氏名が外国式の氏名となっている場合、戸籍上の綴りで入力してください。
     </p>
-    <div>
+    <div class="lastnameMain">
       <div class="text_require">
         <p class="require">必須</p>
         <p class="help-text">姓</p>
@@ -83,10 +88,10 @@
         class="form_input"
         type="text"
         placeholder="入力してください"
-        name=""
+        v-model="form.lastnameMain"
       />
     </div>
-    <div>
+    <div class="fistnameMain">
       <div class="text_require">
         <p class="require">必須</p>
         <p class="help-text">名</p>
@@ -96,9 +101,10 @@
         type="text"
         placeholder="入力してください"
         name="noName"
+        v-model="form.fistnameMain"
       />
     </div>
-    <div>
+    <div class="seiMain">
       <div class="text_require">
         <p class="require">必須</p>
         <p class="help-text">セイ</p>
@@ -108,10 +114,10 @@
         type="text"
         placeholder="入力してください"
         name="lastName"
-        v-model="form.lastName"
+        v-model="form.seiMain"
       />
     </div>
-    <div>
+    <div class="meiMain">
       <div class="text_require">
         <p class="require">必須</p>
         <p class="help-text">メイ</p>
@@ -121,10 +127,10 @@
         type="text"
         placeholder="入力してください"
         name="lastName"
-        v-model="form.mei"
+        v-model="form.meiMain"
       />
     </div>
-    <div>
+    <div class="lastnameRoMain">
       <div class="text_require">
         <p class="require">必須</p>
         <p class="help-text">姓（ローマ字）</p>
@@ -134,10 +140,10 @@
         type="text"
         placeholder="入力してください"
         name="lastName"
-        v-model="form.lastName"
+        v-model="form.lastnameRoMain"
       />
     </div>
-    <div>
+    <div class="fistnameRoMain">
       <div class="text_require">
         <p class="require">必須</p>
         <p class="help-text">名（ローマ字）</p>
@@ -147,10 +153,10 @@
         type="text"
         placeholder="入力してください"
         name="fistNameRo"
-        v-model="form.fistNameRo"
+        v-model="form.fistnameRoMain"
       />
     </div>
-    <div>
+    <div class="gender">
       <div class="text_require">
         <p class="require">必須</p>
         <p class="help-text">性別</p>
@@ -158,7 +164,7 @@
 
       <div class="radio_button">
         <div class="radio_button-1">
-          <input type="radio" id="male" value="Male" v-model="form.picked" />
+          <input type="radio" id="male" value="Male" v-model="form.gender" />
           <label for="male">男性</label>
         </div>
         <div class="radio_button-2">
@@ -166,13 +172,14 @@
             type="radio"
             id="female"
             value="Female"
-            v-model="form.picked"
+            v-model="form.gender"
           />
           <label for="female">女性</label>
         </div>
       </div>
     </div>
-    <div>
+
+    <div class="birthday">
       <div class="text_require">
         <p class="require">必須</p>
         <p class="help-text">生年月日</p>
@@ -218,13 +225,14 @@
         </p>
         <p v-else>生年月日を入力すると表示されます</p>
       </div>
-      <div>
+      <div class="companyName">
         <p>ビジネスネーム</p>
         <p>旧姓を利用する等の場合に入力をしてください。</p>
-        <input type="text" value="" />
+        <input type="text" v-model="form.companyName" />
       </div>
     </div>
   </div>
+
   <div class="form_group">
     <div class="form_title">最終学歴</div>
     <p class="help-text">
@@ -237,14 +245,14 @@
           <p class="require">必須</p>
           <p class="help-text">入学年月日</p>
         </div>
-        <input type="date" />
+        <input type="date" v-model="form.courseTime.start" />
       </div>
       <div class="admission">
         <div class="text_require">
           <p class="require">必須</p>
           <p class="help-text">卒業年月日</p>
         </div>
-        <input type="date" />
+        <input type="date" v-model="form.courseTime.end" />
       </div>
 
       <div>
@@ -360,7 +368,7 @@
       <div class="form_title">資格署名書類（雇用保険被保険者証）</div>
       <p class="help-text">雇用保険被保険者証の写真を添付してください</p>
       <!-- Select or drop image with Vuejs-->
-           <div
+      <div
         v-show="form.previewImage.identificationPhoto"
         class="imagePreviewWrapper"
         :style="{
@@ -734,6 +742,7 @@
         style="width: 100%"
         v-model="form.provinceRela"
       />
+      <form-error :errors="v$.form.provinceRela.$errors" />
     </div>
     <div class="autonomousCityRela">
       <div class="text_require">
@@ -746,6 +755,7 @@
         style="width: 100%"
         v-model="form.autonomousCityRela"
       />
+      <form-error :errors="v$.form.autonomousCityRela.$errors" />
     </div>
     <div class="addressRela">
       <div class="text_require">
@@ -758,6 +768,8 @@
         style="width: 100%"
         v-model="form.addressRela"
       />
+      <form-error :errors="v$.form.addressRela.$errors" />
+
     </div>
     <div>
       <div class="field-name" style="font-weight: 400">建物名称・部屋番号</div>
@@ -768,6 +780,7 @@
         style="width: 100%"
         v-model="form.buildingNameroomNumberRela"
       />
+      <form-error :errors="v$.form.buildingNameroomNumberRela.$errors" />
     </div>
 
     <div class="phoneNumber">
@@ -789,6 +802,7 @@
         style="width: 100%"
         v-model="form.phoneNumberRela"
       />
+      <form-error :errors="v$.form.phoneNumberRela.$errors" />
     </div>
     <div class="mobilePhoneNumber">
       <div class="text_require">
@@ -1026,7 +1040,7 @@
         class="form_input"
         type="text"
         style="width: 100%"
-        v-model="address"
+        v-model="form.address"
       />
     </div>
     <div>
@@ -1055,11 +1069,13 @@
       </p>
       <input
         class="form_input"
-        type="text"
+        type="number"
         style="width: 100%"
         v-model="form.phoneNumber"
       />
+      <form-error :errors="v$.form.phoneNumber.$errors" />
     </div>
+
     <div class="mobilePhoneNumber">
       <div class="text_require">
         <div class="requireother">
@@ -1072,24 +1088,31 @@
       </div>
       <input
         class="form_input"
-        type="text"
+        type="number"
         style="width: 100%"
         v-model="form.mobilePhoneNumberRela"
       />
+      <form-error :errors="v$.form.mobilePhoneNumberRela.$errors" />
     </div>
   </div>
-  <button
-    class="button-agrre"
-    @click.prevent="nextForm"
-    :disabled="!isCheck"
-    type="submit"
-  >
+  <button class="button-agrre" @click.prevent="handleSubumit" type="submit">
     入社手続きの入力に進む
   </button>
 </template>
 
 <script>
+import useVuelidate from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
+import FormError from "./FormError.vue";
 export default {
+  components: {
+    FormError,
+  },
+  setup() {
+    return {
+      v$: useVuelidate(),
+    };
+  },
   data() {
     return {
       form: {
@@ -1097,15 +1120,25 @@ export default {
           facePhoto: null,
           photoDocument: null,
           pensionBookPhoto: null,
-          identificationPhoto: null
+          identificationPhoto: null,
         },
-        fistName: "",
-        lastName: "",
+        lastnameMain: "",
+        fistnameMain: "",
+        seiMain: "",
+        meiMain: "",
+        lastnameRoMain: "",
+        fistnameRoMain: "",
+        companyName: "",
         picked: [],
+        gender: [],
         dmy: {
           date: null,
           month: "",
           year: "",
+        },
+        courseTime: {
+          start: "",
+          end: "",
         },
         educationBg: [],
         schoolName: "",
@@ -1165,6 +1198,23 @@ export default {
       },
     };
   },
+  validations() {
+    return {
+      
+      form: {
+        previewImage: {
+          facePhoto: {required},
+          },
+        provinceRela: { required },
+        phoneNumber:{required},
+        autonomousCityRela: { required },
+        addressRela: { required },
+        buildingNameroomNumberRela: { required },
+        phoneNumberRela: { required },
+        mobilePhoneNumberRela: { required },
+      },
+    };
+  },
   methods: {
     pickFile(payload) {
       console.log(payload.refEl, payload.setData);
@@ -1179,6 +1229,20 @@ export default {
         reader.readAsDataURL(file[0]);
       }
     },
+
+    async handleSubumit() {
+      const isValid = await this.v$.$validate();
+        console.log(this.valid, 'abc');
+
+      if (isValid) {
+        this.$store.dispatch("setInfomation", this.form);
+      }
+    },
+    computed:{
+      valid(){
+        return async()=>  await this.v$.$validate();
+      }
+    }
   },
 };
 </script>
@@ -1203,7 +1267,7 @@ export default {
     height: 250px;
     display: block;
     cursor: pointer;
-    margin: 0 auto 30px;
+    margin: 0 auto 0px;
     background-size: contain;
     background-position: center center;
   }
