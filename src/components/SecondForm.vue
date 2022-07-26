@@ -1,6 +1,4 @@
 
-      // <form-error :errors="v$.form.mobilePhoneNumberRela.$errors" />
-
 <template>
   <div class="form_group">
     <div class="warning">
@@ -30,7 +28,7 @@
         id="formFileSm"
         type="file"
       />
-     
+
       <img src="../assets/images/upload.png" alt="" />
       <div class="mb-3"></div>
       <p>
@@ -39,7 +37,7 @@
         ファイルを参照する
       </p>
     </div>
-     <form-error :errors="v$.form.previewImage.facePhoto.$errors" />
+    <form-error :errors="v$.form.previewImage.facePhoto.$errors" />
   </div>
 
   <div class="form_group">
@@ -769,7 +767,6 @@
         v-model="form.addressRela"
       />
       <form-error :errors="v$.form.addressRela.$errors" />
-
     </div>
     <div>
       <div class="field-name" style="font-weight: 400">建物名称・部屋番号</div>
@@ -1095,6 +1092,324 @@
       <form-error :errors="v$.form.mobilePhoneNumberRela.$errors" />
     </div>
   </div>
+  <!-- 家族情報を登録 đăng ký thông tin gia đình -->
+  <div class="form_group">
+    <div class="form_title">家族情報を登録</div>
+    <p style="margin-bottom: 5px">
+      一等親以内は同居/別居に関わらず記入<br />
+      二親等以上は同居、もしくは扶養義務がある場合に限り記載
+    </p>
+    <div class="help-text">家族情報1</div>
+
+    <div class="relationship">
+      <div class="text_require">
+        <p class="require">必須</p>
+        <p class="help-text">続柄</p>
+      </div>
+      <input
+        class="form_input"
+        type="text"
+        style="width: 100%"
+        v-model="form.relationship"
+      />
+    </div>
+    <div class="lastNameRela2">
+      <div class="text_require">
+        <p class="require">必須</p>
+        <p class="help-text">姓</p>
+      </div>
+      <input
+        class="form_input"
+        type="text"
+        style="width: 100%"
+        v-model="form.lastNameRela2"
+      />
+    </div>
+    <div class="fistNameRela2">
+      <div class="text_require">
+        <p class="require">必須</p>
+        <p class="help-text">名</p>
+      </div>
+      <input
+        class="form_input"
+        type="text"
+        style="width: 100%"
+        v-model="form.fistNameRela2"
+      />
+    </div>
+    <div class="surename2">
+      <div class="text_require">
+        <p class="require">必須</p>
+        <p class="help-text">セイ</p>
+      </div>
+      <input
+        class="form_input"
+        type="text"
+        style="width: 100%"
+        v-model="form.surename2"
+      />
+    </div>
+    <div class="nameMei2">
+      <div class="text_require">
+        <p class="require">必須</p>
+        <p class="help-text">メイ</p>
+      </div>
+      <input
+        class="form_input"
+        type="text"
+        style="width: 100%"
+        v-model="form.nameMei2"
+      />
+    </div>
+    <div class="gender">
+      <div class="text_require">
+        <p class="require">必須</p>
+        <p class="help-text">性別</p>
+      </div>
+
+      <div class="radio_button">
+        <div class="radio_button-1">
+          <input
+            type="radio"
+            id="male"
+            value="Male"
+            v-model="form.genderRela"
+          />
+          <label for="male">男性</label>
+        </div>
+        <div class="radio_button-2">
+          <input
+            type="radio"
+            id="female"
+            value="Female"
+            v-model="form.genderRela"
+          />
+          <label for="female">女性</label>
+        </div>
+      </div>
+    </div>
+    <div class="birthday">
+      <div class="text_require">
+        <p class="require">必須</p>
+        <p class="help-text">生年月日</p>
+      </div>
+      <div class="dateMY">
+        <div>
+          <input
+            type="text"
+            name="date"
+            id="date"
+            v-model="form.dmy2.date"
+            placeholder="西暦（半角"
+          />
+          <span>年</span>
+        </div>
+        <div>
+          <input
+            type="text"
+            name="date"
+            id="date"
+            v-model="form.dmy2.month"
+            placeholder="西暦（半角"
+          />
+          <span>月</span>
+        </div>
+        <div>
+          <input
+            type="text"
+            name="date"
+            id="date"
+            v-model="form.dmy2.year"
+            placeholder="半角"
+          />
+          <span>日</span>
+        </div>
+      </div>
+    </div>
+    <div class="field-name" style="font-weight: 400">年齢</div>
+
+    <p style="margin-bottom: 5px">生年月日を入力すると表示されます</p>
+    <div class="zipCode">
+      <div class="text_require">
+        <p class="require">必須</p>
+        <p class="help-text">郵便番号</p>
+      </div>
+      <div class="dateMY">
+        <div>
+          <input
+            type="number"
+            name="date"
+            id="date"
+            placeholder="半角"
+            v-model="form.zipCodeRela2.zip1"
+          /><span class="horizontal"></span>
+        </div>
+        <div>
+          <input
+            type="number"
+            name="date"
+            id="date"
+            placeholder="半角"
+            v-model="form.zipCodeRela2.zip2"
+          />
+        </div>
+        <button>住所取得</button>
+      </div>
+    </div>
+    <div class="provinceRela2">
+      <div class="text_require">
+        <p class="require">必須</p>
+        <p class="help-text">都道府県</p>
+      </div>
+      <input
+        class="form_input"
+        type="text"
+        style="width: 100%"
+        v-model="form.provinceRela2"
+      />
+    </div>
+    <div class="autonomousCity2">
+      <div class="text_require">
+        <p class="require">必須</p>
+        <p class="help-text">市区町村</p>
+      </div>
+      <input
+        class="form_input"
+        type="text"
+        style="width: 100%"
+        v-model="form.autonomousCity2"
+      />
+    </div>
+    <div class="addressRela2">
+      <div class="text_require">
+        <p class="require">必須</p>
+        <p class="help-text">番地</p>
+      </div>
+      <input
+        class="form_input"
+        type="text"
+        style="width: 100%"
+        v-model="form.addressRela2"
+      />
+    </div>
+
+    <div>
+      <div class="field-name" style="font-weight: 400">建物名称・部屋番号</div>
+      <input
+        class="form_input"
+        type="text"
+        style="width: 100%"
+        v-model="form.buildingNameroomNumber2"
+      />
+    </div>
+
+    <div>
+      <div class="field-name" style="font-weight: 400">勤務先・学校名</div>
+      <input
+        class="form_input"
+        type="text"
+        style="width: 100%"
+        v-model="form.workOrSchoolName"
+      />
+    </div>
+    <div>
+      <div class="field-name" style="font-weight: 400">職業区分</div>
+      <input
+        class="form_input"
+        type="text"
+        style="width: 100%"
+        v-model="form.occupationClassification"
+      />
+    </div>
+    <div>
+      <div class="field-name" style="font-weight: 400">
+        職業区分でその他を選択の理由
+      </div>
+
+      <p style="margin-bottom: 5px">
+        その他を選択した方は、詳細内容を入力してください。学生を選択した方は、大学<br />
+        ○年生など、具体的に入力をお願いいたします。
+      </p>
+      <input
+        class="form_input"
+        type="text"
+        style="width: 100%"
+        v-model="form.reasonsChoseJob"
+      />
+    </div>
+    <div>
+      <div class="field-name" style="font-weight: 400">健康保険扶養区分</div>
+      <input
+        class="form_input"
+        type="text"
+        placeholder="選択してください"
+        style="width: 100%"
+        v-model="form.healthInsuranceClassification"
+      />
+    </div>
+    <div>
+      <div class="field-name" style="font-weight: 400">
+        扶養義務ありの場合は年収を登録してください
+      </div>
+      <input
+        class="form_input"
+        type="text"
+        placeholder="選択してください"
+        style="width: 146px"
+        v-model="form.annualIncome"
+      />
+    </div>
+  </div>
+  <div class="form_group">
+    <div class="form_title">通勤ルート</div>
+    <p class="help-text">
+      経路が２つ以上ある場合は、運賃の安い方を選択してください。<br />
+      片道料金はICカード料金ではなく現金（切符）料金となります。
+    </p>
+    <div class="field-name" style="font-weight: 400;">通勤手段1</div>
+    
+    <div class="commutingMeans">
+      <div class="text_require">
+        <p class="require">必須</p>
+        <p class="help-text">姓</p>
+      </div>
+      <input
+        class="form_input"
+        type="text"
+        placeholder="入力してください"
+        v-model="form.commutingMeans"
+      />
+    </div>
+    <div class="fistnameMain">
+      <div class="text_require">
+        <p class="require">必須</p>
+        <p class="help-text">名</p>
+      </div>
+      <input
+        class="form_input"
+        type="text"
+        placeholder="入力してください"
+        name="noName"
+        v-model="form.fistnameMain"
+      />
+    </div>
+    <div class="seiMain">
+      <div class="text_require">
+        <p class="require">必須</p>
+        <p class="help-text">セイ</p>
+      </div>
+      <input
+        class="form_input"
+        type="text"
+        placeholder="入力してください"
+        name="lastName"
+        v-model="form.seiMain"
+      />
+    </div>
+
+    
+  </div>
+  <!-- submit form -->
   <button class="button-agrre" @click.prevent="handleSubumit" type="submit">
     入社手続きの入力に進む
   </button>
@@ -1195,18 +1510,27 @@ export default {
         buildingNameroomNumberRela: "",
         phoneNumberRela: "",
         mobilePhoneNumberRela: "",
+        //
+        zipCodeRela2: {
+          zip1: null,
+          zip2L: null,
+        },
+        dmy2: {
+          date: "",
+          month: "",
+          year: "",
+        },
       },
     };
   },
   validations() {
     return {
-      
       form: {
         previewImage: {
-          facePhoto: {required},
-          },
+          facePhoto: { required },
+        },
         provinceRela: { required },
-        phoneNumber:{required},
+        phoneNumber: { required },
         autonomousCityRela: { required },
         addressRela: { required },
         buildingNameroomNumberRela: { required },
@@ -1232,17 +1556,17 @@ export default {
 
     async handleSubumit() {
       const isValid = await this.v$.$validate();
-        console.log(this.valid, 'abc');
+      console.log(this.valid, "abc");
 
       if (isValid) {
         this.$store.dispatch("setInfomation", this.form);
       }
     },
-    computed:{
-      valid(){
-        return async()=>  await this.v$.$validate();
-      }
-    }
+    computed: {
+      valid() {
+        return async () => await this.v$.$validate();
+      },
+    },
   },
 };
 </script>

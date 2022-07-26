@@ -196,8 +196,7 @@
 <script>
 // import { mapActions } from 'vuex';
 export default {
-  components: {
-  },
+  components: {},
   data() {
     return {
       isCheckAgree: false,
@@ -209,7 +208,10 @@ export default {
     nextForm() {
       if (this.isCheckAgree) {
         // setCheckAgree(this.isCheckAgree)
-        this.$store.dispatch("setCheckAgree", this.isCheckAgree);
+        this.$store.dispatch("setCheckAgree", {
+          isCheckAgree: this.isCheckAgree,
+          step: 4,
+        });
         this.$router.push("/form2");
       }
     },

@@ -5,14 +5,17 @@ export default createStore({
     return {
       data: {},
       isAgree: false,
+      step: 1
     };
   },
+
   mutations: {
     setData(state, information) {
       state.data = { ...state.data, ...information };
     },
     checkAgree(state, payload) {
-      state.isAgree = payload;
+      state.isAgree = payload.isCheckAgree;
+      state.step = payload.step
     },
   },
 
