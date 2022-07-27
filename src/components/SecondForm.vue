@@ -1858,21 +1858,23 @@ export default {
     }
   }
 }
-.button-agrre {
+
+  .button-agrre {
   margin-top: 16px;
   border-radius: 3px;
   overflow: hidden;
-  a {
-    display: block;
-    width: 100%;
-    text-align: center;
-    color: white;
-    text-decoration: none;
-    font-size: 1.8rem;
-    font-weight: 700;
-    line-height: 1.3;
-    padding: 8px;
-    background: #b2b1ff;
-  }
+  display: block;
+  width: 100%;
+  border: none;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.3;
+  padding: 8px;
+  background: #b2b1ff;
+  cursor: pointer;
 }
+
 </style>
