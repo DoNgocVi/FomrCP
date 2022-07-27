@@ -38,7 +38,6 @@
               alt=""
             />
           </template>
-
           <template v-else>
             <img
               class="icon-success"
@@ -46,8 +45,11 @@
               alt=""
             />
           </template>
-          <span class="number">
-            {{ item }}
+          <span v-if="item % 2 === 0" class="icon-noSuccess">
+            <img src="../assets/images/Group_tick.png" alt="" />
+          </span>
+          <span v-else class="icon-noSuccess">
+            <img src="../assets/images/Group_pencil.png" alt="" />
           </span>
         </div>
       </div>
@@ -139,19 +141,27 @@ body {
     place-items: center;
     background-color: #fff;
     border-radius: 100%;
-    border: 2px solid $default;
     position: relative;
 
     .icon-success {
       position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
       opacity: 0;
       transform: scale(0);
-      width: 24px;
+      width: 40px;
       transition: $transiton;
     }
 
-    .number {
-      font-size: 22px;
+    .icon-noSuccess {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      opacity: 1;
+      transform: scale(1);
+      width: 40px;
       transition: $transiton;
     }
   }
@@ -175,7 +185,7 @@ body {
       transform: scale(1);
     }
 
-    .number {
+    .icon-noSuccess {
       opacity: 0;
       transform: scale(0);
     }
@@ -205,37 +215,6 @@ body {
   padding: 120px 60px;
   box-shadow: 0 8px 12px rgba($color: #000000, $alpha: 0.09);
   margin: 40px 0;
-}
-
-.btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 6px 16px;
-  border: 1px solid;
-  text-align: center;
-  vertical-align: middle;
-  cursor: pointer;
-  line-height: 1.5;
-  transition: all 150ms;
-  border-radius: 4px;
-  width: fit-content;
-  font-size: 0.75rem;
-  color: #333;
-  background-color: #f0f0f0;
-  border-color: #f0f0f0;
-
-  &:disabled {
-    opacity: 0.5;
-    pointer-events: none;
-  }
-
-  &--green-1 {
-    background-color: $violet-1;
-    border-color: $violet-1;
-    color: #fff;
-    margin-left: auto;
-  }
 }
 .form_completebar {
   margin-top: 2.4rem;
